@@ -7,7 +7,8 @@ const Application = () => {
 
   const [article, setArticle] = useState(null)
   const [comments, setComments] = useState([])
-  const [showComments, setShowComments] = useState(true)
+  const [hiddenComments, setHiddenComments] = useState(true)
+  const [buttonLabel, setButtonLabel] = useState('Show more comments')
 
   useEffect(() => {
     setTimeout(() => {
@@ -21,20 +22,21 @@ const Application = () => {
     }, 1500)
   }, [])
 
-  const onClickHandler = () => {
-    if (showComments) {
+  const showMoreComments = () => {
+    if (hiddenComments) {
       setComments(prev => [...prev, ...document.__moreComments])
+      setButtonLabel('Hide comments') 
     } else {
-      const newComments = comments.filter(comment => comment.id <= (comments.length / 2))
-      setComments(newComments)
+      setComments(document.__comments)
+      setButtonLabel('Show more comments')
     }   
-    setShowComments(prev => !prev)
+    setHiddenComments(prev => !prev)
   }
 
   const CommentsView = (
     <>
       <Comments comments={comments}/>
-      <Button clickButton={onClickHandler} showComments={showComments}/>
+      <Button clickButton={showMoreComments} label={buttonLabel}/>
     </>
   )
 

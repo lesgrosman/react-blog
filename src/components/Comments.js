@@ -1,5 +1,6 @@
 import React from "react"
-import { sortComments, getTime, getDate } from '../date/dateFramework'
+import { getDate } from '../date/dateFramework'
+import { sortComments } from '../sorting/sortFramework'
 
 const Comments = ({ comments }) => {
 
@@ -14,7 +15,7 @@ const Comments = ({ comments }) => {
                 <div className="shadow-sm card mb-3">
                   <div className="card-body">
                     <h4 className="card-title">{author}</h4>
-                    <p className="card-subtitle mb-2 text-primary">{getDate(date)} {getTime(date)}</p>
+                    <p className="card-subtitle mb-2 text-primary">{getDate(date)}</p>
                     <hr/>
                     <p className="card-text">{text}</p>
                   </div>

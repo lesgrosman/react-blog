@@ -1,8 +1,6 @@
 import React from 'react'
 
-const Button = ({ clickButton, showComments }) => {
-
-  const label = showComments ? 'Show more comments' : 'Hide comments'
+const Button = ({ clickButton, label }) => {
 
   return (
     <button 
